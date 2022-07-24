@@ -1,5 +1,6 @@
 package com.wilson.ecommerce.config;
 
+import com.wilson.ecommerce.entity.MySampleTab;
 import com.wilson.ecommerce.entity.Product;
 import com.wilson.ecommerce.entity.ProductCategory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +42,12 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
         // disable HTTP methods for ProductCategory: PUT, POST, DELETE
         config.getExposureConfiguration()
                 .forDomainType(ProductCategory.class)
+                .withItemExposure((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions)) // for single data
+                .withCollectionExposure((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions)); // for multiple data
+
+        // disable HTTP methods for MySampleTab: PUT, POST, DELETE
+        config.getExposureConfiguration()
+                .forDomainType(MySampleTab.class)
                 .withItemExposure((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions)) // for single data
                 .withCollectionExposure((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions)); // for multiple data
 
