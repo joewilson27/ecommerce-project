@@ -13,6 +13,7 @@ export class ProductListComponent implements OnInit {
   products?: Product[];
   currentCategoryId?: number;
   currentCategoryName?: string;
+  searchMode?: boolean;
   // inject our ProductService
   constructor(private productService: ProductService,
               private route: ActivatedRoute) { }
@@ -25,29 +26,53 @@ export class ProductListComponent implements OnInit {
 
   listProducts() {
 
-    // check if "id" parameter is available
-    const hasCategoryId: boolean = this.route.snapshot.paramMap.has("id");
+    this.searchMode = this.route.snapshot.paramMap.has("keyword"); // this 'keyword' passed in from SearchComponent
 
-    if (hasCategoryId) {
-      // get the "id" param string. convert string to a number using the "+" symbol
-      this.currentCategoryId = +this.route.snapshot.params["id"]; // +this.route.snapshot.paramMap.get('id');
-      // + parameter value is returned as string. Use the "+" symbol to convert to number
-
-      // get the "name" param string
-      this.currentCategoryName = this.route.snapshot.paramMap.get('name') || "";
-    }
-    else {
-      // not category_id available... default to cateogry id 1 and category name book
-      this.currentCategoryId = 1;
-      this.currentCategoryName = 'Books';
+    if (this.searchMode) {
+      this.handleSearchProducts();
+    } else {
+      this.handleListProducts();
     }
 
-    // now get the products for the given category id
-    this.productService.getProductList(this.currentCategoryId).subscribe( //   it executes the observal, it's a method that comes from rxjs library which Angular is using internally.
-      data => {
-        this.products = data;
+  }
+
+  handleSearchProducts() {
+    
+    const theKeyword: string = this.route.snapshot.paramMap.get("keyword") || "";
+
+    // now search for the products using keyword
+    this.productService.searchProducts(theKeyword).subscribe(data => {
+      this.products = data;
+    });
+
+  }
+
+  handleListProducts() {
+
+      // check if "id" parameter is available
+      const hasCategoryId: boolean = this.route.snapshot.paramMap.has("id");
+
+      if (hasCategoryId) {
+        // get the "id" param string. convert string to a number using the "+" symbol
+        this.currentCategoryId = +this.route.snapshot.params["id"]; // +this.route.snapshot.paramMap.get('id');
+        // + parameter value is returned as string. Use the "+" symbol to convert to number
+  
+        // get the "name" param string
+        this.currentCategoryName = this.route.snapshot.paramMap.get('name') || "";
       }
-    ) // method is invoked once you "subscribe"
+      else {
+        // not category_id available... default to cateogry id 1 and category name book
+        this.currentCategoryId = 1;
+        this.currentCategoryName = 'Books';
+      }
+  
+      // now get the products for the given category id
+      this.productService.getProductList(this.currentCategoryId).subscribe( //   it executes the observal, it's a method that comes from rxjs library which Angular is using internally.
+        data => {
+          this.products = data;
+        }
+      ) // method is invoked once you "subscribe"
+
   }
 
 }

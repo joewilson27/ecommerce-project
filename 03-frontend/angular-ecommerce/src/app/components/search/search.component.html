@@ -1,0 +1,12 @@
+<div class="form-header">
+  <!-- #myInput untuk reference di event nanti, agar bisa pass value -->
+  <input #myInput type="text" 
+         placeholder="Search for products ..."
+         class="au-input au-input-xl" 
+         (keyup.enter)="doSearch(myInput.value)" />
+  
+  <button (click)="doSearch(myInput.value)" class="au-btn-submit">
+    Search
+  </button>
+
+</div>
