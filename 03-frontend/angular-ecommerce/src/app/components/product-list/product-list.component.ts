@@ -10,16 +10,18 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProductListComponent implements OnInit {
 
-  products?: Product[];
-  currentCategoryId?: number;
-  currentCategoryName?: string;
-  searchMode?: boolean;
+  products: Product[];
+  currentCategoryId: number;
+  currentCategoryName: string;
+  searchMode: boolean;
   // inject our ProductService
   constructor(private productService: ProductService,
               private route: ActivatedRoute) { }
+  // inject the activatedroute, useful for accessing route parameters
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(() => {
+      // listProducts dapat menggunakan paramMap karena sudah di bind oleh route (ActivatedRoute)
       this.listProducts();
     });
   }
@@ -27,6 +29,12 @@ export class ProductListComponent implements OnInit {
   listProducts() {
 
     this.searchMode = this.route.snapshot.paramMap.has("keyword"); // this 'keyword' passed in from SearchComponent
+
+    // this.route.snapshot.paramMap
+    // route => activatedRoute
+    // snapshot => state of route at this given moment in time
+    // paramMap => Map of all the route parameters
+    // has("keyword") => read the keyword parameter in querystring, 'string' adl nama pada path
 
     if (this.searchMode) {
       this.handleSearchProducts();
@@ -38,7 +46,7 @@ export class ProductListComponent implements OnInit {
 
   handleSearchProducts() {
     
-    const theKeyword: string = this.route.snapshot.paramMap.get("keyword") || "";
+    const theKeyword: string = this.route.snapshot.paramMap.get("keyword")!;
 
     // now search for the products using keyword
     this.productService.searchProducts(theKeyword).subscribe(data => {
@@ -54,11 +62,11 @@ export class ProductListComponent implements OnInit {
 
       if (hasCategoryId) {
         // get the "id" param string. convert string to a number using the "+" symbol
-        this.currentCategoryId = +this.route.snapshot.params["id"]; // +this.route.snapshot.paramMap.get('id');
+        this.currentCategoryId = +this.route.snapshot.paramMap.get('id')!; // another way -> +this.route.snapshot.params["id"]; // 
         // + parameter value is returned as string. Use the "+" symbol to convert to number
   
         // get the "name" param string
-        this.currentCategoryName = this.route.snapshot.paramMap.get('name') || "";
+        this.currentCategoryName = this.route.snapshot.paramMap.get('name')!;
       }
       else {
         // not category_id available... default to cateogry id 1 and category name book

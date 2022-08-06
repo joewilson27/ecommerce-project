@@ -1,5 +1,5 @@
 Section = 15
-Video = 100
+Video = 103
 time = 
 	
 ==============================================
@@ -296,3 +296,15 @@ https://www.udemy.com/course/full-stack-angular-spring-boot-tutorial/learn/lectu
 Install Extension Angular Language Service pada IDE VSCode agar dapat code error (ini versi IDE VSCode lama, VSCode baru sudah ada error pada id)
 
 Lalu utk solve problemnya, kita tambahkan property id pada model class product di product.ts
+
+
+section 15 vid 102
+
+Angular convert string to number
+https://stackoverflow.com/questions/66052793/angular-typescript-convert-string-to-number
+
+
+section 15 vid 104
+Race conditions, jadi ada error di background, ketika aplikasi di jalankan, ada property product yg dimana dia membutuhkan
+object product sebelum dia di sign ke data pada file product-details.component.ts
+karena kalau tidak di buat object product, maka akan undefined pada file htmlnya
