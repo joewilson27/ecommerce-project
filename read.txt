@@ -1,5 +1,5 @@
 Section = 16
-Video = 113
+Video = 116
 time = 
 	
 ==============================================
@@ -333,3 +333,12 @@ Section 16 vid 109
 Install Ng Pagination
 1. ng add @angular/localize
 2. npm install @ng-bootstrap/ng-bootstrap
+
+
+Section 16 vid 116
+Setting Max Size,
+jadi ini case-nya jika  misalnya kita set utk pageSize 2 per page, maka dia tidak akan mencetak semua nomor halaman,
+dia akan menampilkan beberapa nomor halaman dan di batasi ... hingga halaman terakhir
+
+[boundaryLinks]="true"
+ini fitur untuk kasih button first dan last page
