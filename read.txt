@@ -1,5 +1,5 @@
-Section = 15
-Video = 103
+Section = 16
+Video = 113
 time = 
 	
 ==============================================
@@ -308,3 +308,28 @@ section 15 vid 104
 Race conditions, jadi ada error di background, ketika aplikasi di jalankan, ada property product yg dimana dia membutuhkan
 object product sebelum dia di sign ke data pada file product-details.component.ts
 karena kalau tidak di buat object product, maka akan undefined pada file htmlnya
+
+
+Section 16 vid 106
+Pagination overview,
+Spring support pagination, we also need create pagiantion on frontend
+
+http://localhost:8080/api/products?page=0&size=10 -> get the first page, with pagesize of 10
+http://localhost:8080/api/products?page=1&size=10 -> get the second page, with pagesize of 10
+REMEMBER spring pagination is zero based, pages are 0-based. first page is at postion 0
+
+Pagination with Angular: https://ng-bootstrap.github.io/
+Pagination component on Angular:
+page: the page number to access. 1-based.. defaults 1
+pageSize: the item size of the page
+collectionSize: the total number of items
+pageChange: Event handler for the page change events
+
+Section 16 vid 107
+Backend (spring) 0-based and frontend (Angular) 1-based
+
+
+Section 16 vid 109
+Install Ng Pagination
+1. ng add @angular/localize
+2. npm install @ng-bootstrap/ng-bootstrap

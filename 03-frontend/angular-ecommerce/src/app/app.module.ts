@@ -11,6 +11,8 @@ import { ProductCategoryMenuComponent } from './components/product-category-menu
 import { SearchComponent } from './components/search/search.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 const routes: Routes = [
   // kindly reminder, the order of routes is IMPORTANT
   {path: 'products/:id', component: ProductDetailsComponent},
@@ -33,7 +35,8 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes),
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [ProductService], // inject that given service into other parts
   bootstrap: [AppComponent]
