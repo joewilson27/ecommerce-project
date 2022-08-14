@@ -1,5 +1,5 @@
 Section = 17
-Video = 122
+Video = 131
 time = 
 	
 ==============================================
@@ -342,3 +342,10 @@ dia akan menampilkan beberapa nomor halaman dan di batasi ... hingga halaman ter
 
 [boundaryLinks]="true"
 ini fitur untuk kasih button first dan last page
+
+
+Section 17 Video 123
+
+Subject is a subclass of Observable
+we can use subject to publish events in our code.
+the event will be sent to all of the subscriber
