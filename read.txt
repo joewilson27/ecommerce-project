@@ -349,3 +349,11 @@ Section 17 Video 123
 Subject is a subclass of Observable
 we can use subject to publish events in our code.
 the event will be sent to all of the subscriber
+
+
+Section 18 vid 140
+Add message if shopping cart is empty
+
+
+Section 18 vid 142
+Add increment & decrement button to cart details quantity (no function in this section)
