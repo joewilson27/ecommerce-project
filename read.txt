@@ -1,5 +1,5 @@
-Section = 18
-Video = 146
+Section = 19
+Video = 152
 time =
 	
 ==============================================
@@ -357,3 +357,16 @@ Add message if shopping cart is empty
 
 Section 18 vid 142
 Add increment & decrement button to cart details quantity (no function in this section)
+
+
+Section 19 vid 147
+Angular provides two types of forms
+- Reactive forms (complex forms, can be easily reused and tested)
+- Template-driven forms (simple forms)
+
+for comparison, see: https://angular.oi/guide/forms-overview
+
+
+
+Section 19 vid 150
+FormGroup -> form controls of form elements 
