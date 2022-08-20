@@ -9,6 +9,10 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class CheckoutComponent implements OnInit {
 
   checkoutFormGroup: FormGroup;
+
+  totalPrice: number = 0;
+  totalQuantity: number = 0;
+
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
@@ -18,8 +22,42 @@ export class CheckoutComponent implements OnInit {
         firstName: [''],
         lastName: [''],
         email: ['']
+      }),
+      shippingAddress: this.formBuilder.group({
+        street: [''],
+        city: [''],
+        state: [''],
+        country: [''],
+        zipCode: ['']
+      }),
+      billingAddress: this.formBuilder.group({
+        street: [''],
+        city: [''],
+        state: [''],
+        country: [''],
+        zipCode: ['']
+      }),
+      creditCard: this.formBuilder.group({
+        cardType: [''],
+        nameOnCard: [''],
+        cardNumber: [''],
+        securityCode: [''],
+        expirationMonth: [''],
+        expirationYear: ['']
       })
     });
+
+  }
+
+  copyShippingAddressToBillingAddress(event: any) {
+    // cara copy dari form Shipping Address ke Billing Address
+    if (event.target.checked) {
+      this.checkoutFormGroup.controls['billingAddress']
+          .setValue(this.checkoutFormGroup.controls['shippingAddress'].value);
+    } else {
+      // reset form if unchecked
+      this.checkoutFormGroup.controls['billingAddress'].reset();
+    }
 
   }
 
