@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { WilsonFormService } from 'src/app/services/wilson-form.service';
 
 @Component({
   selector: 'app-checkout',
@@ -13,7 +14,11 @@ export class CheckoutComponent implements OnInit {
   totalPrice: number = 0;
   totalQuantity: number = 0;
 
-  constructor(private formBuilder: FormBuilder) { }
+  creditCardYears: number[] = [];
+  creditCardMonths: number[] = [];
+
+  constructor(private formBuilder: FormBuilder,
+             private wilsonFormService: WilsonFormService) { }
 
   ngOnInit(): void {
 
@@ -47,6 +52,24 @@ export class CheckoutComponent implements OnInit {
       })
     });
 
+    // populate credit card months
+
+    const startMonths: number = new Date().getMonth() + 1; // +1 because getMonths is 0-based
+    console.log("startMonths: " + startMonths);
+
+    this.wilsonFormService.getCreditCardMonths(startMonths).subscribe(
+      data => {
+        console.log("Retrieved credit card months: " + JSON.stringify(data));
+        this.creditCardMonths = data;
+      }
+    );
+
+    // populate credit card years
+
+    this.wilsonFormService.getCreditCardYears().subscribe(data => {
+      console.log("Retrieved credit card years: " + JSON.stringify(data));
+      this.creditCardYears = data;
+    });
   }
 
   copyShippingAddressToBillingAddress(event: any) {
