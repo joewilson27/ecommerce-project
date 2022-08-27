@@ -370,3 +370,25 @@ for comparison, see: https://angular.oi/guide/forms-overview
 
 Section 19 vid 150
 FormGroup -> form controls of form elements 
+
+
+
+Section 19 vid 163
+from another example on join column (spring bot) --> actually from Learn Spring Section 3 vid 21
+We have 2 tables that would be joining
+Employees and Project --> Many employees could be assign to one projects and one project allows many employees to assigned by
+
+So here the view in the model entity
+
+In Project entity:
+@OneToMany(mappedBy="theProject") 
+private List<Employee> employees;
+* one project could be assigned to many employee, remember, mappedBy harus di isi persis dgn nama property yg di define pada table yg ingin di relation kan
+
+in Employee entity:
+@ManyToOne
+@JoinColumn(name="project_id") 
+private Project theProject;
+* would be create the field on Employee table as the given name 'project_id', jadi nanti nama field pada table adl 'project_id'
+
+jadi pada class entity, utk table yg @ManyToOne menggunakan @Data pada class entitynya, sedangkan join table satunya dengan @OneToMany dapat menggunakan @Setter & @Getter pada class entity-nya.. pada contoh di sini, yg menggunakan @ManyToOne adalah entity state dan utk @OneToMany adalah country
