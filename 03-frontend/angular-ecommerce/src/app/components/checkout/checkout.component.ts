@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Country } from 'src/app/common/country';
+import { State } from 'src/app/common/state';
 import { WilsonFormService } from 'src/app/services/wilson-form.service';
 
 @Component({
@@ -17,6 +19,11 @@ export class CheckoutComponent implements OnInit {
   creditCardYears: number[] = [];
   creditCardMonths: number[] = [];
 
+  countries: Country[] = [];
+
+  shippingAddressStates: State[] = [];
+  billingAddressStates: State[] = [];
+  
   constructor(private formBuilder: FormBuilder,
              private wilsonFormService: WilsonFormService) { }
 
@@ -53,7 +60,6 @@ export class CheckoutComponent implements OnInit {
     });
 
     // populate credit card months
-
     const startMonths: number = new Date().getMonth() + 1; // +1 because getMonths is 0-based
     console.log("startMonths: " + startMonths);
 
@@ -65,11 +71,19 @@ export class CheckoutComponent implements OnInit {
     );
 
     // populate credit card years
-
     this.wilsonFormService.getCreditCardYears().subscribe(data => {
       console.log("Retrieved credit card years: " + JSON.stringify(data));
       this.creditCardYears = data;
     });
+
+    // populate countries
+    this.wilsonFormService.getCountries().subscribe(
+      data => {
+        console.log("Retrieved countries: " + JSON.stringify(data));
+        this.countries = data;
+      }
+    );
+
   }
 
   copyShippingAddressToBillingAddress(event: any) {
@@ -115,6 +129,35 @@ export class CheckoutComponent implements OnInit {
         this.creditCardMonths = data;
       } 
     );
+
+  }
+
+  getStates(formGroupName: string) {
+
+    const formGroup = this.checkoutFormGroup.get(formGroupName);
+
+    const countryCode = formGroup.value.country.code;
+    const countryName = formGroup.value.country.name;
+
+    console.log(`{formGroupName} country code: ${countryCode}`);
+    console.log(`{formGroupName} country name: ${countryName}`);
+
+    this.wilsonFormService.getStates(countryCode).subscribe(
+      data => {
+
+        // check if country from shippingAddress formgroup
+        if (formGroupName === 'shippingAddress') {
+          this.shippingAddressStates = data;
+        } 
+        else {
+          this.billingAddressStates = data;
+        }
+
+        // select first item by default
+        formGroup.get('state').setValue(data[0]);
+      }
+    );
+
 
   }
 
