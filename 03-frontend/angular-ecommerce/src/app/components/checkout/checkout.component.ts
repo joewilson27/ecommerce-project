@@ -89,11 +89,18 @@ export class CheckoutComponent implements OnInit {
   copyShippingAddressToBillingAddress(event: any) {
     // cara copy dari form Shipping Address ke Billing Address
     if (event.target.checked) {
-      this.checkoutFormGroup.controls['billingAddress']
-          .setValue(this.checkoutFormGroup.controls['shippingAddress'].value);
+       this.checkoutFormGroup.controls['billingAddress']
+           .setValue(this.checkoutFormGroup.controls['shippingAddress'].value);
+      //console.log('zz',this.checkoutFormGroup.controls['shippingAddress'].value);
+      // bug fix for states, kalau kita checkbox pada form shippingAddress maka kolom state pada section billingAddress tidak meng-copy dari kolom state pada shippingAddress
+      this.billingAddressStates = this.shippingAddressStates;
+
     } else {
       // reset form if unchecked
       this.checkoutFormGroup.controls['billingAddress'].reset();
+
+      // bug fix for states
+      this.billingAddressStates = [];
     }
 
   }
@@ -102,6 +109,10 @@ export class CheckoutComponent implements OnInit {
     console.log("Handling the submit button");
     console.log(this.checkoutFormGroup.get("customer").value);
     console.log("The email address is " + this.checkoutFormGroup.get("customer").value.email);
+
+    console.log("The shipping address country is " + this.checkoutFormGroup.get("shippingAddress").value.country.name);
+    console.log("The shipping address state is " + this.checkoutFormGroup.get("shippingAddress").value.state.name);
+
   }
 
   handleMonthsAndYears() {
@@ -139,8 +150,8 @@ export class CheckoutComponent implements OnInit {
     const countryCode = formGroup.value.country.code;
     const countryName = formGroup.value.country.name;
 
-    console.log(`{formGroupName} country code: ${countryCode}`);
-    console.log(`{formGroupName} country name: ${countryName}`);
+    console.log(`${formGroupName} country code: ${countryCode}`);
+    console.log(`${formGroupName} country name: ${countryName}`);
 
     this.wilsonFormService.getStates(countryCode).subscribe(
       data => {
