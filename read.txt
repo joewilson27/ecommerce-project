@@ -1,5 +1,5 @@
-Section = 20
-Video = 176
+Section = 21
+Video = 181
 time = __
 	
 ==============================================
@@ -392,3 +392,27 @@ private Project theProject;
 * would be create the field on Employee table as the given name 'project_id', jadi nanti nama field pada table adl 'project_id'
 
 jadi pada class entity, utk table yg @ManyToOne menggunakan @Data pada class entitynya, sedangkan join table satunya dengan @OneToMany dapat menggunakan @Setter & @Getter pada class entity-nya.. pada contoh di sini, yg menggunakan @ManyToOne adalah entity state dan utk @OneToMany adalah country
+
+
+Section 21 vid 177
+validators.email vs validators.pattern
+
+validators.email is too weak, joe@email dianggap valid meski ga ada domain .com .us .sg dll
+use validators.pattern instead
+
+these two validators ONLY check the FORMAT, doesn't verify if email address is real
+
+
+Only display validation errors if user has interacted with the form:
+- When the user changes field value, the control is marked as 'dirty' --> firstName.dirty
+- When the field loses focus, the control is marked as 'touched' --> firstName.touched
+ 
+'^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}$'
+
+explained -->  ^[a-z0-9._%+-]+ >> match any combination of letters and digits, optional period
+	 --> [a-z0-9.-]+\\. >> match any combination of letters and digits, with period
+	--> [a-z]{2,3}$ >> domain extension 2-4 letters
+
+
+Section 21 vid 181 
+this.checkoutFormGroup.markAllAsTouched(); // Touching all fields triggers the display of the error messages
