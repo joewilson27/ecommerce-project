@@ -1,6 +1,6 @@
 Section = 21
-Video = 181
-time = __
+Video = 193
+time = 
 	
 ==============================================
 Section 4 vid 6
@@ -416,3 +416,6 @@ explained -->  ^[a-z0-9._%+-]+ >> match any combination of letters and digits, o
 
 Section 21 vid 181 
 this.checkoutFormGroup.markAllAsTouched(); // Touching all fields triggers the display of the error messages
+
+
+Section 21 vid 183 - Custom Validation Rule
