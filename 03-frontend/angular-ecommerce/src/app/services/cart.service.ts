@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { CartItem } from '../common/cart-item';
 
 @Injectable({
@@ -9,8 +9,10 @@ export class CartService {
 
   cartItems: CartItem[] = [];
 
-  totalPrice: Subject<number> = new Subject<number>(); // Subject is a subclass of Obversable. we can use Subject to publish events in our code. The event will be sent to all of the subscribers.
-  totalQuantity: Subject<number> = new Subject<number>();
+  totalPrice: Subject<number> = new BehaviorSubject<number>(0); // new Subject<number>(0); // Subject is a subclass of Obversable. we can use Subject to publish events in our code. The event will be sent to all of the subscribers.
+  totalQuantity: Subject<number> = new BehaviorSubject<number>(0); // BehaviorSubject will give the latest value
+  // jadi, dengan BehaviorSubject, meski nilai ini di update terakhir, dia tetap akan memberikan latest value dari hasil perubahan
+  // nilai ini 
 
   constructor() { }
 

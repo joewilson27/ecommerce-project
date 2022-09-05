@@ -1,5 +1,5 @@
 Section = 21
-Video = 193
+Video = 197
 time = 
 	
 ==============================================
@@ -419,3 +419,32 @@ this.checkoutFormGroup.markAllAsTouched(); // Touching all fields triggers the d
 
 
 Section 21 vid 183 - Custom Validation Rule
+
+
+Section 22 vid 194
+ReplaySubject  >> keep a buffer of previous events. Sends previous events to new subscribers
+http://www.luv2code.com/rxjs-replay-subject
+
+ReplaySubject is not a perfect solution to a new subscribers, because actually we don't care about the intermediate events, we only care about the latest results
+
+
+BehaviorSubject is a subclassof subject
+- Has a notation of "current value"
+- Stores the latest message /event... and sends to new subscribers
+
+So BehaviorSubjects are useful for representing values over time.
+
+For instance, an event stream of birthdays is a subject
+but the stream of a person's age would be a BehaviorSubject.
+
+http://www.luv2code.com/rxjs-behavior-subject
+
+So using that analogy, a stream of a person's age.
+So you meet a young person.
+Hey, how old are you?
+14, 17, 18, okay, great.
+That's the only value you need.
+You only need to know their latest age or their current age.
+You really don't care about their age of five, three or two,
+only their latest age.
+So that's the idea of using a BehaviorSubject one use case.
