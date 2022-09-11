@@ -6,6 +6,11 @@ import lombok.Data;
 @Data
 public class PurchaseResponse {
 
-    private String orderTrackingNumber;
+    private final String orderTrackingNumber; // dengan final, maka magically class ini akan memprovide constructor
+    // dan class lain yg menggunakan class ini dapat men-define new PurchaseResponse(someOrderNumber)
+
+//    public PurchaseResponse(String orderTrackingNumber) {
+//        this.orderTrackingNumber = orderTrackingNumber;
+//    }
 
 }
