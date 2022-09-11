@@ -45,6 +45,18 @@ public class Order {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "order") // mapped by order variable in OrderItem entity
     private Set<OrderItem> orderItems = new HashSet<>();
 
+    @ManyToOne
+    @JoinColumn(name = "customer_id") // customer_id adalah column yg akan di buat pada table Order
+    private Customer customer;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "shipping_address_id", referencedColumnName = "id") // shipping_address_id adalah column yg akan di buat pada table Order, id adl reference column yg di defined di table Address
+    private Address shippingAddress;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "billing_address_id", referencedColumnName = "id")
+    private Address billingAddress;
+
     // convenience method
     public void add(OrderItem item) {
 

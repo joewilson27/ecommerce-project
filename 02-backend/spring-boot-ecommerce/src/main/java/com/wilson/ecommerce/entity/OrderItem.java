@@ -29,6 +29,8 @@ public class OrderItem {
     @Column(name="product_id")
     private Long productId;
 
+    @ManyToOne
+    @JoinColumn(name = "order_id") // order_id adalah column yg akan di buat pada table OrderItem
     private Order order;
 
 }

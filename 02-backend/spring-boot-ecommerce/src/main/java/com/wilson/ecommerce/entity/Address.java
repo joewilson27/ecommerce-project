@@ -31,4 +31,8 @@ public class Address {
     @Column(name="zip_code")
     private String zipCode;
 
+    @OneToOne
+    @PrimaryKeyJoinColumn // Join using primary keys by default keys have same name, id --> ini di table address yg di referencedColumnName
+    private Order order;
+
 }
