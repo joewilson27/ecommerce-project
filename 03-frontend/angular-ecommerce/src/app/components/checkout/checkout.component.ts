@@ -207,7 +207,9 @@ export class CheckoutComponent implements OnInit {
     purchase.customer = this.checkoutFormGroup.controls['customer'].value;
 
     // populate purchase - shipping address
-    purchase.shippingAddress = this.checkoutFormGroup.controls['shippingAddress'].value;
+    purchase.shippingAddress = this.checkoutFormGroup.controls['shippingAddress'].value; // disini masukin field yang biasa street, city, zipcode
+    console.log("print", purchase.shippingAddress);
+    console.log("state", purchase.shippingAddress.state);
     const shippingState: State = JSON.parse(JSON.stringify(purchase.shippingAddress.state));
     const shippingCountry: Country = JSON.parse(JSON.stringify(purchase.shippingAddress.country));
     purchase.shippingAddress.state = shippingState.name;
@@ -307,7 +309,7 @@ export class CheckoutComponent implements OnInit {
         }
 
         // select first item by default
-        formGroup.get('state').setValue(data[0]);
+        formGroup?.get('state').setValue(data[0]);
       }
     );
 

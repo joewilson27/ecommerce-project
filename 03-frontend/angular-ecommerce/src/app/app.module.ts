@@ -16,9 +16,28 @@ import { CartStatusComponent } from './components/cart-status/cart-status.compon
 import { CartDetailsComponent } from './components/cart-details/cart-details.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './components/login/login.component';
+import { LoginStatusComponent } from './components/login-status/login-status.component';
+
+import {
+  OktaAuthModule,
+  OktaCallbackComponent,
+  OKTA_CONFIG
+} from '@okta/okta-angular';
+
+import { OktaAuth } from '@okta/okta-auth-js';
+
+import myAppConfig from './config/my-app-config';
+
+const oktaConfig = myAppConfig.oidc;
+
+const oktaAuth = new OktaAuth(oktaConfig);
 
 const routes: Routes = [
   // kindly reminder, the order of routes is IMPORTANT
+  {path: 'login/callback', component: OktaCallbackComponent}, // once the user is authenticated, they are redirected to your app. Normally we'd have to write code to parse the response and store the OAuth and OIDC tokens
+  {path: 'login', component: LoginComponent},
+
   {path: 'checkout', component: CheckoutComponent},
   {path: 'cart-details', component: CartDetailsComponent},
   {path: 'products/:id', component: ProductDetailsComponent},
@@ -39,16 +58,19 @@ const routes: Routes = [
     ProductDetailsComponent,
     CartStatusComponent,
     CartDetailsComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    LoginComponent,
+    LoginStatusComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
     BrowserModule,
     HttpClientModule,
     NgbModule,
-    ReactiveFormsModule // support for reactive form module
+    ReactiveFormsModule, // support for reactive form module
+    OktaAuthModule
   ],
-  providers: [ProductService], // inject that given service into other parts
+  providers: [ProductService, { provide: OKTA_CONFIG, useValue: { oktaAuth }}], // inject that given service into other parts
   bootstrap: [AppComponent]
 })
 export class AppModule { }

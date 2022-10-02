@@ -1,6 +1,6 @@
-Section = 24
-Video = 217
-time = 
+Section = 25
+Video = 234
+time =
 	
 ==============================================
 Section 4 vid 6
@@ -453,3 +453,46 @@ So that's the idea of using a BehaviorSubject one use case.
 Section 23 vid 199
 Download save order database
 www.luv2code.com/save-the-order-starter-files.zip
+
+
+Section 25 vid 219
+In the modern security world, there are a couple of key terms or concepts:
+- Authentication --> proses validasi user (username, password) or (Token, pin) of (Finger print,  retina scan) for login
+- Authorization --> process of determining the action a user, commonly understood as roles: guess, user & admin 
+- OAuth 2 (www.oauth.net) --> Authorization framework that enables app to have limited access to a resource on behalf of a resource owner (user). Sebagai contoh jika kamu ingin men-share images dari google drive ke another app (penjelasan di menit 2:08)
+- OpenID Connect (OIDC) (www.openid.net/connect) --> identity layer on top of OAuth 2
+- JSON Web Tokens (JWT) (www.jwt.io) :
+ * Open standard that defines self-contained way of describing tokens
+ * Secure and digitally signed to guarantee integrity
+ * Used by OAuth and OpenID Connect
+
+
+Section 25 vid 221
+Okta.com provides a cloud based authorization server + platform (no need credit card)
+
+Section 25 vid 223
+PKCE: Proof Key for Code Exchange (at 3:18)
+for more detail about PKCE --> http://www.luv2code.com/okta-pkce
+
+Section 25 vid 224
+Documentation for Okta Components
+- Okta Sign-In Widget: https://github.com/okta/okta-signin-widget
+- Okta Angular SDK: https://github.com/okta/okta-angular
+- Okta JavaScript SDK: https://github.com/okta/okta-auth-js
+
+
+Section 25 vid 225
+Create a new app integration (okta.com)
+- choose applications/applications from menu
+- sign-in method -> OIDC - OpenID Connect
+- application type -> single-page application
+
+
+ecommercejoe27@proton.me
+Bisaterusdah27
+
+
+Section 25 vid 234
+ignore the warning when run frontend;
+open angular.json
+add entry key and value to options from projects/angular-ecommerce/architect/options
