@@ -13,8 +13,24 @@ export class CartService {
   totalQuantity: Subject<number> = new BehaviorSubject<number>(0); // BehaviorSubject will give the latest value
   // jadi, dengan BehaviorSubject, meski nilai ini di update terakhir, dia tetap akan memberikan latest value dari hasil perubahan
   // nilai ini 
+  
+  //storage: Storage = sessionStorage; // reference to web browser's session storage --> close browser, data loss
+  // instead of sessionStorage, we use localStorage
+  storage: Storage = localStorage; // close browser and re-open, data is persisted and survives browser restart, data tetap ada meski browser di restart
 
-  constructor() { }
+  constructor() { 
+
+    // read data from session storage, then convert to JSON
+    let data = JSON.parse(this.storage.getItem('cartItems'));
+
+    if (data != null) {
+      this.cartItems = data;
+
+      // compute totals based on the data that is read from storage
+      this.computeCartTotals();
+    }
+
+  }
 
   addToCart(theCartItem: CartItem) {
 
@@ -69,6 +85,14 @@ export class CartService {
 
     // log cart data just for debugging purposes
     this.logCartData(totalPriceValue, totalQuantityValue);
+
+    // Persist cart data 
+    this.persistcartItems();
+  }
+
+  persistcartItems() {
+    // set data to sesion storage, convert data from Object to JSON String
+    this.storage.setItem('cartItems', JSON.stringify(this.cartItems));
   }
 
   logCartData(totalPriceValue: number, totalQuantityValue: number) {

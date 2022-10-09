@@ -1,5 +1,5 @@
-Section = 26
-Video = 238
+Section = 27
+Video = 243
 time =
 	
 ==============================================
@@ -496,3 +496,32 @@ Section 25 vid 234
 ignore the warning when run frontend;
 open angular.json
 add entry key and value to options from projects/angular-ecommerce/architect/options
+
+
+Section 27 vid 239
+Two types of Web Storage 
+- Session storage
+Data is stored in web browser's memory
+Stores the data in the web browser's session (memory)
+Data is never sent to the server 
+tiap tab browser memiliki session masing2, data tidak dapat di share antar tabs
+Ketika tab browser di close, maka data is no longer available
+
+
+
+- Local Storage
+Data is stored on client side computer
+Stores the data locally on the client web browser computer
+Data is never sent to the server
+Data is available to the tab of the same browser for same origin, bisa share data antar tab pada browser
+App must read data again, normally with a browser refresh
+Data persist even if the web browser is closed
+No experation date on data
+can clear data using JavaScript or Clearing Web browser cache
+For local storage.. data is NOT shared between different web browser, jd data localstorage pd chrome tidak bisa di akses oleh mozilla dan sebaliknya
+
+
+Data Scoping
+The data is scoped to a given "origin", jadi ini terkait scope data itu sendiri berdasarkan base origin-nya
+
+
