@@ -1,5 +1,5 @@
 Section = 26
-Video = 238
+Video = 238  
 time =
 	
 ==============================================
@@ -13,7 +13,7 @@ DO NOT edit the JavaScript file (.ts)
 Remember .js is generated everytime by the TypeScript compiler
 
 
-Section 4 vid 8
+//Section 4 vid 8
 Defining Variables - Overview
 let <variableName>: <type> = <initial value>;
 example= 
