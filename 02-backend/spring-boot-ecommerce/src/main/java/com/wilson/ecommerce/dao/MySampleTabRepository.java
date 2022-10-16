@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 * mySampleTab:
 * href:	"http://localhost:8080/api/my-sample-tab{?page,size,sort}"
 * */
-@CrossOrigin("http://localhost:4200")
+//@CrossOrigin("http://localhost:4200")
 @RepositoryRestResource(collectionResourceRel = "mySampleTab", path = "my-sample-tab")
 public interface MySampleTabRepository extends JpaRepository<MySampleTab, Long> {
 }

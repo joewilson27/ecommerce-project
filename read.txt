@@ -1,5 +1,5 @@
 Section = 28
-Video = 245
+Video = 246
 time =
 	
 ==============================================
@@ -524,4 +524,10 @@ For local storage.. data is NOT shared between different web browser, jd data lo
 Data Scoping
 The data is scoped to a given "origin", jadi ini terkait scope data itu sendiri berdasarkan base origin-nya
 
+
+Section 28 vid 248
+Spring Data REST has different detection strategies
+ALL, DEFAULT, VISIBILITY, ANNOTATED
+
+for this, we use ANNOTATED for our Spring Data REST Detection Strategy
 

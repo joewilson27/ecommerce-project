@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
-@CrossOrigin("http://localhost:4200")
+//@CrossOrigin("http://localhost:4200")
 // this annotation is for using hybrid to the rest api and webpages
 @RepositoryRestResource(collectionResourceRel = "productCategory", path = "product-category")
 // notes: "productCategory" -> name of JSON entry, "product-category" -> /product-category

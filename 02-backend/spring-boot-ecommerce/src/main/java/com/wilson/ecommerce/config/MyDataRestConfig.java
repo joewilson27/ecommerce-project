@@ -2,6 +2,7 @@ package com.wilson.ecommerce.config;
 
 import com.wilson.ecommerce.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
@@ -17,6 +18,9 @@ import java.util.Set;
 @Configuration
 public class MyDataRestConfig implements RepositoryRestConfigurer {
 
+    @Value("${allowed.origins}") // allowed.origins --> in application.properties file
+    private String[] theAllowedOrigins;
+
     private EntityManager entityManager;
 
     @Autowired
@@ -24,9 +28,10 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
         entityManager = theEntityManager;
     }
 
+    // RepositoryRestConfiguration config on parameter use spring.data.rest.base-path in application.properties
     @Override
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {
-        RepositoryRestConfigurer.super.configureRepositoryRestConfiguration(config, cors);
+        //RepositoryRestConfigurer.super.configureRepositoryRestConfiguration(config, cors);
 
         // list the unsupported action we want to set
         HttpMethod[] theUnsupportedActions = {HttpMethod.PUT, HttpMethod.POST, HttpMethod.DELETE};
@@ -40,6 +45,12 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
 
         // call an internal helper method
         exposeIds(config);
+
+        // configure cors mapping
+        // with this configure, we can remove @CrossOrigin annotation on JpaRepository
+        //cors.addMapping("/api/**").allowedOrigins("http://localhost:4200"); // hard-coded
+        cors.addMapping(config.getBasePath() + "/**").allowedOrigins(theAllowedOrigins); // if you have a multiple allow origins, simply use comma for delimeters in here
+
     }
 
     // Reusable methods
