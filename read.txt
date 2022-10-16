@@ -1,5 +1,5 @@
 Section = 28
-Video = 246
+Video = 252
 time =
 	
 ==============================================
@@ -531,3 +531,10 @@ ALL, DEFAULT, VISIBILITY, ANNOTATED
 
 for this, we use ANNOTATED for our Spring Data REST Detection Strategy
 
+
+
+Section 28 vid 252
+Disable HTTP Patch method
+
+spring.data.rest.detection-strategy=ANNOTATED
+dengan settingan ini, maka api yg bisa dipanggil yg hanya menggunakan @RepositoryRestResource
