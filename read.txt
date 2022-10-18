@@ -1,5 +1,5 @@
-Section = 28
-Video = 252
+Section = 29
+Video = 254
 time =
 	
 ==============================================
@@ -538,3 +538,7 @@ Disable HTTP Patch method
 
 spring.data.rest.detection-strategy=ANNOTATED
 dengan settingan ini, maka api yg bisa dipanggil yg hanya menggunakan @RepositoryRestResource
+
+
+Section 28 vid 254
+Create OrderRepository for finding Order by customer email

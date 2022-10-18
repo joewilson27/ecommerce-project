@@ -43,6 +43,7 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
         disableHttpMethods(MySampleTab.class, config, theUnsupportedActions); // my example
         disableHttpMethods(Country.class, config, theUnsupportedActions);
         disableHttpMethods(State.class, config, theUnsupportedActions);
+        disableHttpMethods(Order.class, config, theUnsupportedActions);
 
         // call an internal helper method
         exposeIds(config);
