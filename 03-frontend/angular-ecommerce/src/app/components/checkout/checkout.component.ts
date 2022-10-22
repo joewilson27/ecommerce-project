@@ -30,6 +30,8 @@ export class CheckoutComponent implements OnInit {
 
   shippingAddressStates: State[] = [];
   billingAddressStates: State[] = [];
+
+  storage: Storage = sessionStorage;
   
   constructor(private formBuilder: FormBuilder,
              private wilsonFormService: WilsonFormService,
@@ -41,6 +43,9 @@ export class CheckoutComponent implements OnInit {
 
     this.reviewCartDetails();
 
+    // read the user's email address from the browser storage
+    const theEmail = JSON.parse(this.storage.getItem('theEmail'));
+
     this.checkoutFormGroup = this.formBuilder.group({
       customer: this.formBuilder.group({
         firstName: new FormControl('', 
@@ -51,7 +56,7 @@ export class CheckoutComponent implements OnInit {
                                 [Validators.required, 
                                  Validators.minLength(2),
                                  WilsonValidators.notOnlyWhitespace]),
-        email: new FormControl('',
+        email: new FormControl(theEmail, // fulfilled email field on form 
                                 [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}$')])
       }),
       shippingAddress: this.formBuilder.group({
