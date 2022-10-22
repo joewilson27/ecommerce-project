@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   oktaSignin: any;
 
   constructor(@Inject(OKTA_AUTH) private oktaAuth: OktaAuth) { 
-
+    // sample from other source https://github.com/okta/samples-js-angular/blob/master/custom-login/src/app/login/login.component.ts
     this.oktaSignin = new OktaSignIn({
       logo: 'assets/images/logo.png',
       baseUrl: myAppConfig.oidc.issuer.split('/oauth2')[0], 
