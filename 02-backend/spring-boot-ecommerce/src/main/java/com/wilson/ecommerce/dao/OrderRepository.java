@@ -10,6 +10,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 @RepositoryRestResource
 public interface OrderRepository extends JpaRepository<Order, Long> {
 
-	Page<Order> findByCustomerEmailOrderByDateCreatedDescfindByCustomerEmailOrderByDateCreatedDesc(@Param("email") String email, Pageable pageable);
+	Page<Order> findByCustomerEmailOrderByDateCreatedDesc(@Param("email") String email, Pageable pageable);
 	// Spring can actually do magic for you, they'll query base on this method
 }
