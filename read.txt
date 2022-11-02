@@ -1,5 +1,5 @@
-Section = 30
-Video = 267
+Section = 31
+Video = 270
 time =
 	
 ==============================================
@@ -545,3 +545,7 @@ Section 30 vid 267
 coba jalankan api http://localhost:8080/api/orders/search/findByCustomerEmail?email=ecommercejoe27@proton.me di postman dan browser, maka akan mendapatkan error 401
 
 when we run the application and login, try to open the orders page, then you can find 401 unauthorized. Why? padahal kita login? ya kita hanya login di bagian frontend, namun pada saat itu, request dr frontend ke backend kita butuh meng-update access token dengan HTTP request agar tidak 401
+
+
+Section 30 vid269
+www.luv2code.com/angular-additional-resources
