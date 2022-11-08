@@ -1,5 +1,5 @@
 Section = 31
-Video = 271
+Video = 274
 time =
 	
 ==============================================
@@ -549,3 +549,7 @@ when we run the application and login, try to open the orders page, then you can
 
 Section 30 vid269
 www.luv2code.com/angular-additional-resources
+
+Section 31 vid 274
+by minutes 3:10
+can't purchase order because CSRF is enable, so disabled it since we are not using cookies for session tracking

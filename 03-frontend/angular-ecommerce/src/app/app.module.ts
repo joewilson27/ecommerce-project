@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ProductService } from './services/product.service';
 
 import { Routes, RouterModule, Router } from '@angular/router';
@@ -31,6 +31,7 @@ import { OktaAuth } from '@okta/okta-auth-js';
 import myAppConfig from './config/my-app-config';
 import { MembersPageComponent } from './components/members-page/members-page.component';
 import { OrderHistoryComponent } from './components/order-history/order-history.component';
+import { AuthInterceptorService } from './services/auth-interceptor.service';
 
 const oktaConfig = myAppConfig.oidc;
 
@@ -93,7 +94,14 @@ const routes: Routes = [
     ReactiveFormsModule, // support for reactive form module
     OktaAuthModule
   ],
-  providers: [ProductService, { provide: OKTA_CONFIG, useValue: { oktaAuth }}], // inject that given service into other parts
+  providers: [ProductService, { provide: OKTA_CONFIG, useValue: { oktaAuth }},
+              {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}], // inject that given service into other parts
+  /**
+   * provide: HTTP_INTERCEPTORS -> That's our token for the HTTP interceptors
+   * useClass: AuthInterceptorService -> register our AuthInterceptorService as an HTTP interceptor
+   * multi: true -> Informs Angular that HTTP_INTERCEPTORS is a token for injection an array of values
+   * 
+   */
   bootstrap: [AppComponent]
 })
 export class AppModule { }
