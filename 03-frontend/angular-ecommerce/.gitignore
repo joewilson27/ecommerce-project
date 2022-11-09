@@ -6,6 +6,10 @@
 /out-tsc
 /bazel-out
 
+# SSL
+/ssl-localhost
+localhost.conf
+
 # Node
 /node_modules
 npm-debug.log

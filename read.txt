@@ -1,5 +1,5 @@
-Section = 31
-Video = 274
+Section = 32
+Video = 276
 time =
 	
 ==============================================
@@ -553,3 +553,26 @@ www.luv2code.com/angular-additional-resources
 Section 31 vid 274
 by minutes 3:10
 can't purchase order because CSRF is enable, so disabled it since we are not using cookies for session tracking
+
+
+Section 32 vid 275
+HTTPS uses the TLS protocol (Transport Layer Security). TLS is more secure than SSL
+
+Using HTTPS
+- There are no changes required to the source code
+- configure your server to run using secure keys and certificate
+- then you'll be able access your site with https
+
+Keys and Certs
+- To run securely, you will need keys and certificates
+ - provides proof of your server's identity (domain name)
+ - reviewed and signed by a trusted certificate authority (godaddy, verisign, amazon, etc)
+- In the real world, you normally have to pay for a certificate
+ - for dev/demo purposes, we are going to save money
+ - we will create self-signed certificates
+
+source for more details: www.luv2code.com/https-additional-resources
+
+section 32 vid 276
+follow the instructions on www.luv2code.com/openssl-setup (DONT FORGET TO RUN THIS ON ANOTHER LOCAL COMPUTER)
+then it will produces file localhost.crt & localhost.key on folder ssl-localhost
