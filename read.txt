@@ -606,3 +606,5 @@ after run backend, then access from browser: https://localhost:8443/api/products
 setting in chrome to allow self-signed certs on localhost ssl, jadi page chrome akan melewatkan peringatan self-signed confirmation
 chrome://flags
 then type allow-insecure-localhost on input column there, and simply enabled the option if you found it
+
+DON'T FORGET TO CREATE wilson-keystore.p12 if you want to clone this project on your machine
