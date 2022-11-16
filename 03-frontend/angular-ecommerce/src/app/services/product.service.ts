@@ -4,15 +4,16 @@ import { Observable } from 'rxjs';
 import { Product } from '../common/product';
 import { map } from 'rxjs'; // reactive JavaScript
 import { ProductCategory } from '../common/product-category';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-  private baseUrl = 'http://localhost:8080/api/products'; // size default 20
+  private baseUrl = environment.wilsonApiUrl + '/products'; // size default 20
 
-  private categoryUrl = 'http://localhost:8080/api/product-category'; 
+  private categoryUrl = environment.wilsonApiUrl + '/product-category'; 
 
   constructor(private httpClient: HttpClient) { }
 
