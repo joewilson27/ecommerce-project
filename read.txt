@@ -1,5 +1,5 @@
-Section = 32
-Video = 278
+Section = 33
+Video = 281
 time =
 	
 ==============================================
@@ -554,6 +554,8 @@ Section 31 vid 274
 by minutes 3:10
 can't purchase order because CSRF is enable, so disabled it since we are not using cookies for session tracking
 
+Section 32 vid 274
+Secure Communication with HTTPS - Angular Frontend
 
 Section 32 vid 275
 HTTPS uses the TLS protocol (Transport Layer Security). TLS is more secure than SSL
@@ -576,3 +578,31 @@ source for more details: www.luv2code.com/https-additional-resources
 section 32 vid 276
 follow the instructions on www.luv2code.com/openssl-setup (DONT FORGET TO RUN THIS ON ANOTHER LOCAL COMPUTER)
 then it will produces file localhost.crt & localhost.key on folder ssl-localhost
+
+Section 33 vid 279
+Secure communications with HTTPS - Spring Boot Backend
+
+Java Keystore
+- Java provides support for keys and certificates
+- A keystore is a file that contains keys and certificates
+- The entries are associated with an alias and password
+
+Section 33 vid 280
+reference: www.luv2code.com/keytool-steps
+
+this will generate file in your project src/main/resources/wilson-keystore.p12
+run on command
+keytool -genkeypair -alias wilson -keystore "C:\Java\ecommerce-project\02-backend\spring-boot-ecommerce\src\main\resources\wilson-keystore.p12" -keypass secret -storeType PKCS12 -storepass secret -keyalg RSA -keysize 2048 -validity 365 -dname "C=US, ST=Pennsylvania, L=Philadelphia, O=luv2code, OU=Training Backend, CN=localhost" -ext "SAN=dns:localhost"
+keytool -list -v -alias wilson -keystore "C:\Java\ecommerce-project\02-backend\spring-boot-ecommerce\src\main\resources\wilson-keystore.p12" -storepass secret
+
+NOTED: For Maven Projects
+Files in src/main/resources are automatically added to the classpath
+so in this case we put the value:
+server.ssl.key-store=classpath:wilson-keystore.p12
+in this case, wilson-keystore.p12 is located in src/main/resources in our project
+
+after run backend, then access from browser: https://localhost:8443/api/products
+
+setting in chrome to allow self-signed certs on localhost ssl, jadi page chrome akan melewatkan peringatan self-signed confirmation
+chrome://flags
+then type allow-insecure-localhost on input column there, and simply enabled the option if you found it
