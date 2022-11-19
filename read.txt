@@ -629,3 +629,6 @@ npm start -- --configuration=production,
 so configuration pada serve tadi akan di mapping dengan configuration sebelumnya
 
 Additional resources : www.luv2code.com/angular-optimization-configuration
+
+run angular project with qa configuration:
+npm start -- --configuration=qa
