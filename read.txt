@@ -1,5 +1,5 @@
 Section = 34
-Video = 283
+Video = 289
 time =
 	
 ==============================================
@@ -608,3 +608,24 @@ chrome://flags
 then type allow-insecure-localhost on input column there, and simply enabled the option if you found it
 
 DON'T FORGET TO CREATE wilson-keystore.p12 if you want to clone this project on your machine
+
+
+section 34 video 284
+environment.ts -> default environment
+environtment.prod.ts -> prod environment
+
+npm start -> will using environment.ts
+npm start -- --configuration=production -> will using environment.prod.ts
+
+Behind the scenes 
+How does it work behind the scenes?
+- Environment configurations are defined in: angular.json
+- Angular CLI tool added entries for "production" configuration in the file initially
+(you can check them in file angular.json)
+How are the filenames mapped to an environment
+- In the "serve" section of angular.json, defines runtime support
+(you can check them in file angular.json, in "serve" parameter), referenced from the command-line when we start the app:
+npm start -- --configuration=production,
+so configuration pada serve tadi akan di mapping dengan configuration sebelumnya
+
+Additional resources : www.luv2code.com/angular-optimization-configuration
