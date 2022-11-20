@@ -1,5 +1,5 @@
-Section = 34
-Video = 289
+Section = 35
+Video = 292
 time =
 	
 ==============================================
@@ -632,3 +632,33 @@ Additional resources : www.luv2code.com/angular-optimization-configuration
 
 run angular project with qa configuration:
 npm start -- --configuration=qa
+
+
+Section 35 vid 90
+
+Payment processors
+- Large number of payment processors in the market
+- Stripe
+- Paypal, etc...
+in this lecture, we are going to use Stripe (Stripe provide a modern API)
+
+Section 35 vid 291
+- Stripe provides an API for processing credit card payments
+- REST API available
+- Libraries also available for JS, Java, .NET, PHP, Go Etc...
+source: https://stripe.com/docs
+
+Sensitive Data
+When dealing with credit card data, you must protect cardholder data
+Your DevOps process must be PCI compliant. Payment Card Industry Data Security Standard (PCI DSS), this standard ensures that all companies accept, process, store and transmit data in a secure environment
+
+Notes: NEVER sending credit card data to our own server or storing it in memory or our own database
+Additional resources: 
+https://stripe.com/docs/security
+https://stripe.com/guides/pci-compliance
+
+
+Section 35 vid 292
+Stripe Integration: Checkout Form
+ecommerce.app  -->  Stripe Servers  --> Bank
+source: https://stripe.com/payments/checkout
