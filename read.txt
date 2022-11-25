@@ -1,5 +1,5 @@
 Section = 35
-Video = 292
+Video = 298
 time =
 	
 ==============================================
@@ -662,3 +662,25 @@ Section 35 vid 292
 Stripe Integration: Checkout Form
 ecommerce.app  -->  Stripe Servers  --> Bank
 source: https://stripe.com/payments/checkout
+
+Section 35 vid 293
+Stripe integration: Stripe Elements
+Source: https://stripe.com/payments/elements
+
+
+Section 35 vid 296
+wilsonmangunsong@proton.me 1wordkey
+
+go to homepage stripe.com then choose developers -> libraries & sdk
+
+Section 35 vid 298
+Why did we use type int to amount in class PaymentInfo?
+Lalu bagaimana untuk amount $12.54? apakah bisa digunakan jika menggunakan int? Well in the Stripe API apa yg mereka lakukan adalah mereka menggunakan denominasi terendah pada currency and itu merepresentasikan amount.
+For example = $12.54
+1 cent adl denominasi terendah pada USD
+- 1 cent = 0.01 dollars
+- 100 cents = 1 dollars
+So..
+$12.54 * 100 = 1254 cents ==> use the amount of 1254 cents
+source: https://stripe.com/docs/api/payment_intents
+
