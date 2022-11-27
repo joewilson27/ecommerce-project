@@ -1,5 +1,5 @@
 Section = 35
-Video = 299
+Video = 304
 time =
 	
 ==============================================
@@ -684,3 +684,8 @@ So..
 $12.54 * 100 = 1254 cents ==> use the amount of 1254 cents
 source: https://stripe.com/docs/api/payment_intents
 
+
+Section 35 vid 304
+kita load Stripe cdn pada index
+<script src="https://js.stripe.com/v3" async></script>
+sync disana berarti script di download secara paralel untuk di parsing ke halaman
