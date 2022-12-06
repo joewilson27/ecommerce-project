@@ -10,6 +10,8 @@ import { CartService } from 'src/app/services/cart.service';
 import { CheckoutService } from 'src/app/services/checkout.service';
 import { WilsonFormService } from 'src/app/services/wilson-form.service';
 import { WilsonValidators } from 'src/app/validators/wilson-validators';
+import { environment } from 'src/environments/environment';
+import { PaymentInfo } from 'src/app/common/payment-info';
 
 @Component({
   selector: 'app-checkout',
@@ -33,6 +35,14 @@ export class CheckoutComponent implements OnInit {
 
   storage: Storage = sessionStorage;
   
+  // initialize Stripe API
+  stripe = Stripe(environment.stripePublishableKey);
+
+  paymentInfo: PaymentInfo = new PaymentInfo();
+  cardElement: any;
+  displayError: any = "";
+
+
   constructor(private formBuilder: FormBuilder,
              private wilsonFormService: WilsonFormService,
              private cartService: CartService,
@@ -40,6 +50,9 @@ export class CheckoutComponent implements OnInit {
              private router: Router) { }
 
   ngOnInit(): void {
+
+    // setup Stripe payment form
+    this.setupStripePaymentForm();
 
     this.reviewCartDetails();
 
@@ -80,6 +93,7 @@ export class CheckoutComponent implements OnInit {
                                      WilsonValidators.notOnlyWhitespace])
       }),
       creditCard: this.formBuilder.group({
+        /*  comment this for change to Stripe
         cardType: new FormControl('', [Validators.required]),
         nameOnCard:  new FormControl('', [Validators.required, Validators.minLength(2), 
                                           WilsonValidators.notOnlyWhitespace]),
@@ -87,9 +101,11 @@ export class CheckoutComponent implements OnInit {
         securityCode: new FormControl('', [Validators.required, Validators.pattern('[0-9]{3}')]),
         expirationMonth: [''],
         expirationYear: ['']
+        */
       })
     });
 
+    /* comment this for change to Stripe
     // populate credit card months
     const startMonths: number = new Date().getMonth() + 1; // +1 because getMonths is 0-based
     console.log("startMonths: " + startMonths);
@@ -106,6 +122,7 @@ export class CheckoutComponent implements OnInit {
       console.log("Retrieved credit card years: " + JSON.stringify(data));
       this.creditCardYears = data;
     });
+    */
 
     // populate countries
     this.wilsonFormService.getCountries().subscribe(
@@ -115,6 +132,10 @@ export class CheckoutComponent implements OnInit {
       }
     );
 
+  }
+  
+  setupStripePaymentForm() {
+    throw new Error('Method not implemented.');
   }
 
   reviewCartDetails() {
