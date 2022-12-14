@@ -275,6 +275,11 @@ export class CheckoutComponent implements OnInit {
     purchase.order = order;
     purchase.orderItems = orderItems;
 
+    // compute payment info
+    this.paymentInfo.amount = this.totalPrice * 100; // convert to cents
+    this.paymentInfo.currency = "USD";
+
+    /* change this step for using Stripe payment process
     // call REST API via the CheckoutService
     this.checkoutService.placeOrder(purchase).subscribe(
       {
@@ -291,7 +296,30 @@ export class CheckoutComponent implements OnInit {
           alert(`There was an error: ${err.message}`);
         }
       }
-    )
+    );
+    */
+
+    // if valid form then
+    // - create payment intent
+    // - confirm card payment
+    // - place order
+
+    if (!this.checkoutFormGroup.invalid && this.displayError.textContent === "") {
+      
+      this.checkoutService.createPaymentIntent(this.paymentInfo).subscribe(
+        (paymentIntentResponse) => {
+          // send credit card data directly to stripe.com
+          this.stripe.confirmCardPayment(paymentIntentResponse.client_secret,
+            {
+              payment_method: {
+                card: this.cardElement // reference the stripe element component: cardElement
+              }
+            }  
+          );
+        }
+      ); // create payment intent Spring Boot REST API
+
+    }
 
   }
 
