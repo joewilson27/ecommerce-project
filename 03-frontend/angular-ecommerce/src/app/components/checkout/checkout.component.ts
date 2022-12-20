@@ -305,10 +305,10 @@ export class CheckoutComponent implements OnInit {
     // - place order
 
     if (!this.checkoutFormGroup.invalid && this.displayError.textContent === "") {
-      
+      // (1. Create payment intent)
       this.checkoutService.createPaymentIntent(this.paymentInfo).subscribe(
         (paymentIntentResponse) => {
-          // send credit card data directly to stripe.com
+          // send credit card data directly to stripe.com (2. Confirm card payment)
           this.stripe.confirmCardPayment(paymentIntentResponse.client_secret,
           {
               payment_method: {
@@ -320,7 +320,7 @@ export class CheckoutComponent implements OnInit {
               // inform the customer there was an error
               alert(`There was an error: ${result.error.message}`);
             } else {
-              // call REST API via the CheckoutService (Store in MySQL DB)
+              // call REST API via the CheckoutService (Store in MySQL DB) (3. Place order)
               this.checkoutService.placeOrder(purchase).subscribe({
                 next: (response: any) =>  {
                   alert(`Your order has been received.\nOrder tracking number: ${response.orderTrackingNumber}`);
