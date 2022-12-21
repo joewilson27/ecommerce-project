@@ -1,5 +1,5 @@
 Section = 35
-Video = 309
+Video = 310
 time =
 	
 ==============================================
@@ -669,7 +669,7 @@ Source: https://stripe.com/payments/elements
 
 
 Section 35 vid 296
-wilsonmangunsong@proton.me 1wordkey
+wilsonmangunsong@proton.me
 
 go to homepage stripe.com then choose developers -> libraries & sdk
 
@@ -689,3 +689,9 @@ Section 35 vid 304
 kita load Stripe cdn pada index
 <script src="https://js.stripe.com/v3" async></script>
 sync disana berarti script di download secara paralel untuk di parsing ke halaman
+
+Sec 35 vid 310
+Credit card test: 4242 4242 4242 4242
+ketika test di form, valid number and cvc can input any number
+
+untuk mengecek sukses transaksi, ke stripe -> payments -> all payments
