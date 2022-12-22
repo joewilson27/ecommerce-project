@@ -276,9 +276,10 @@ export class CheckoutComponent implements OnInit {
     purchase.orderItems = orderItems;
 
     // compute payment info
-    this.paymentInfo.amount = this.totalPrice * 100; // convert to cents
+    this.paymentInfo.amount = Math.round(this.totalPrice * 100); // convert to cents
     this.paymentInfo.currency = "USD";
 
+    console.log(`this.paymentInfo.amount: ${this.paymentInfo.amount}`);
     /* change this step for using Stripe payment process
     // call REST API via the CheckoutService
     this.checkoutService.placeOrder(purchase).subscribe(

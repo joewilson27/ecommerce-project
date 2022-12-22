@@ -1,5 +1,5 @@
 Section = 35
-Video = 310
+Video = 311
 time =
 	
 ==============================================
@@ -695,3 +695,8 @@ Credit card test: 4242 4242 4242 4242
 ketika test di form, valid number and cvc can input any number
 
 untuk mengecek sukses transaksi, ke stripe -> payments -> all payments
+
+
+Sec35 vid 311
+JavaScript behaviour amount 1898,999999 jadi 1898
+makannya amount mug yg 1899 jadi 1898, maka payment kita tambahkan math.round supaya 1898,999999 jadi 1899
