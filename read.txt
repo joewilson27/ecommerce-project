@@ -1,5 +1,5 @@
 Section = 35
-Video = 312
+Video = 315
 time =
 	
 ==============================================
@@ -705,3 +705,6 @@ makannya amount mug yg 1899 jadi 1898, maka payment kita tambahkan math.round su
 Sec 35 vid 312 
 Bug fix for browser reload after checkout
 Case, after checkout form order, then the cart is 0 item, but actually if we reload the page, the card is would be filled with the last item
+
+Sec 35 vid 313 to vid 315
+Add some detail to Stripe from backend and frontend

@@ -82,6 +82,7 @@ public class CheckoutServiceImpl implements CheckoutService {
         params.put("amount", paymentInfo.getAmount());
         params.put("currency", paymentInfo.getCurrency());
         params.put("payment_method_types", paymentMethodTypes);
+        params.put("description", "wilson purchase"); // ini akan mengisi payment details pada payment details di Stripe
 
         return PaymentIntent.create(params);
         // this will communicate with the backend stripe.com servers,

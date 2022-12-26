@@ -313,7 +313,19 @@ export class CheckoutComponent implements OnInit {
           this.stripe.confirmCardPayment(paymentIntentResponse.client_secret,
           {
               payment_method: {
-                card: this.cardElement // reference the stripe element component: cardElement
+                card: this.cardElement, // reference the stripe element component: cardElement
+                billing_details: {
+                  email: purchase.customer.email,
+                  name: `${purchase.customer.firstName} ${purchase.customer.lastName}`,
+                  // ini akan muncul pada payment method di stripes nya
+                  address: {
+                    line1: purchase.billingAddress.street,
+                    city: purchase.billingAddress.city,
+                    state: purchase.billingAddress.state,
+                    postal_code: purchase.billingAddress.zipCode,
+                    country: this.billingAddressCountry.value.code
+                  },
+                },
               }
           }, { handleAction: false })
           .then((result: any) => {
