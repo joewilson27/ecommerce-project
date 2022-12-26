@@ -1,5 +1,5 @@
 Section = 35
-Video = 315
+Video = 317
 time =
 	
 ==============================================
@@ -708,3 +708,6 @@ Case, after checkout form order, then the cart is 0 item, but actually if we rel
 
 Sec 35 vid 313 to vid 315
 Add some detail to Stripe from backend and frontend
+
+Sec 35 vid 316 to vid 317
+Disabled payment button, avoid multiple times click purchase sehingga data yg di kirim ke Stripe 1 order, klik berkali2 pada click purchase tidak bisa 
