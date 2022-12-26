@@ -1,5 +1,5 @@
 Section = 35
-Video = 311
+Video = 312
 time =
 	
 ==============================================
@@ -700,3 +700,8 @@ untuk mengecek sukses transaksi, ke stripe -> payments -> all payments
 Sec35 vid 311
 JavaScript behaviour amount 1898,999999 jadi 1898
 makannya amount mug yg 1899 jadi 1898, maka payment kita tambahkan math.round supaya 1898,999999 jadi 1899
+
+
+Sec 35 vid 312 
+Bug fix for browser reload after checkout
+Case, after checkout form order, then the cart is 0 item, but actually if we reload the page, the card is would be filled with the last item

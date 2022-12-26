@@ -87,10 +87,10 @@ export class CartService {
     this.logCartData(totalPriceValue, totalQuantityValue);
 
     // Persist cart data 
-    this.persistcartItems();
+    this.persistCartItems();
   }
 
-  persistcartItems() {
+  persistCartItems() {
     // set data to sesion storage, convert data from Object to JSON String
     this.storage.setItem('cartItems', JSON.stringify(this.cartItems));
   }
