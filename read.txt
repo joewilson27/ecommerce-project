@@ -1,5 +1,5 @@
 Section = 35
-Video = 317
+Video = 319
 time =
 	
 ==============================================
@@ -711,3 +711,11 @@ Add some detail to Stripe from backend and frontend
 
 Sec 35 vid 316 to vid 317
 Disabled payment button, avoid multiple times click purchase sehingga data yg di kirim ke Stripe 1 order, klik berkali2 pada click purchase tidak bisa 
+
+
+Sec 35 vid 318
+- Stripe can automatically send email receipts after a successful payment
+- Developer provides customer's email when creating a PaymentIntent
+Note: in test mode ... using Test API keys
+- email receipts are not sent automatically 
+- you need to manually send email receipts from Stripe Dashboard 

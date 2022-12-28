@@ -83,7 +83,8 @@ public class CheckoutServiceImpl implements CheckoutService {
         params.put("currency", paymentInfo.getCurrency());
         params.put("payment_method_types", paymentMethodTypes);
         params.put("description", "wilson purchase"); // ini akan mengisi payment details pada payment details di Stripe
-
+        params.put("receipt_email", paymentInfo.getReceiptEmail());
+        
         return PaymentIntent.create(params);
         // this will communicate with the backend stripe.com servers,
         // this give us back this PaymentIntent object that also has client secret insid
