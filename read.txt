@@ -1,5 +1,5 @@
 Section = 35
-Video = 319
+Video = 321
 time =
 	
 ==============================================
@@ -719,3 +719,14 @@ Sec 35 vid 318
 Note: in test mode ... using Test API keys
 - email receipts are not sent automatically 
 - you need to manually send email receipts from Stripe Dashboard 
+
+Sec 35 vid 320
+NOTE:
+Email receipt for payments created using TEST API keys are
+not sent automatically.
+Instead, you can manually send a receipt using the Stripe Dashboard.
+Once you go to production, then the email receipts will be sent
+automatically.
+Again, we simply have to do the manual step here since we're using Test API keys.
+Open Dashboard Stripe -> payments
+lalu pada listing payments, pilih icon email utk send receipts
